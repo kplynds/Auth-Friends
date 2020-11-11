@@ -5,7 +5,13 @@ import Protected from "./components/protected";
 import Login from "./components/login";
 import PrivateRoute from "./components/PrivateRoute";
 
-function App() {
+function App(props) {
+  console.log(props)
+  const signout = () => {
+    localStorage.removeItem('token')
+    // history.push('/login')
+  }
+
   return (
     <Router>
       <div className="app">
@@ -13,6 +19,9 @@ function App() {
           <ul>
             <li>
               <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link onClick={signout}>Signout</Link>
             </li>
             <li>
               <Link to="/protected">Protected</Link>
